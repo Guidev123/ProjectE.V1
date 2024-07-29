@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddEnvMiddleware();
 builder.AddDbContextMiddleware();
+builder.AddJwtMiddleware();
 builder.AddSwaggerMiddleware();
 
 

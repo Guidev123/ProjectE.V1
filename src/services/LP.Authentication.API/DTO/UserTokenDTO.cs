@@ -1,4 +1,9 @@
 ﻿namespace LP.Authentication.API.DTO
 {
-    public record UserTokenDTO(string Id, string Email, IEnumerable<UserClaimDTO> Claims);
+    public record UserTokenDTO
+    {
+        public string? Id { get; set; }
+        public string? Email { get; set; } 
+        public IEnumerable<UserClaimDTO> Claims { get; set; } = null!;
+    }
 }
