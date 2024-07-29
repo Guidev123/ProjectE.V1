@@ -6,6 +6,7 @@ builder.AddEnvMiddleware();
 builder.AddDbContextMiddleware();
 builder.AddJwtMiddleware();
 builder.AddSwaggerMiddleware();
+builder.ResolveDependencies();
 
 
 var app = builder.Build();

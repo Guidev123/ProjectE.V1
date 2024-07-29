@@ -63,5 +63,9 @@ namespace LP.Authentication.API.Configuration
                 };
             });
         }
+        public static void ResolveDependencies(this WebApplicationBuilder builder) {
+
+            builder.Services.AddScoped<IJwt, Jwt>();
+        }
     }
 }
