@@ -22,6 +22,7 @@ public class AuthController(SignInManager<IdentityUser> signManager,
         {
             UserName = userRegister.Email,
             Email = userRegister.Email,
+            PhoneNumber = userRegister.Phone,
             EmailConfirmed = true
         };
 
@@ -43,10 +44,8 @@ public class AuthController(SignInManager<IdentityUser> signManager,
 
         var result = await _signManager.PasswordSignInAsync(userLogin.Email, userLogin.Password, false, true);
 
-        if (result.Succeeded)
-        {
-            return Ok();
-        }
+        if (result.Succeeded) return Ok();
+        
         return BadRequest();
     }
 }
