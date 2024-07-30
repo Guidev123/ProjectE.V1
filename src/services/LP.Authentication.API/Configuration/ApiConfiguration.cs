@@ -68,5 +68,18 @@ namespace LP.Authentication.API.Configuration
 
             builder.Services.AddScoped<IJsonWebTokenHandler, JsonWebTokenHandler>();
         }
+
+        public static void AddCorsMiddleware(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddCors(op =>
+            {
+                op.AddPolicy(name: "ApiPolicy", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+        }
     }
 }

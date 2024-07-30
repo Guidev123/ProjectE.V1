@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LP.Core.WebApi.Controllers
+namespace LP.Core.Controllers
 {
     [ApiController]
     public abstract class MainController : ControllerBase
@@ -14,7 +14,7 @@ namespace LP.Core.WebApi.Controllers
         protected ICollection<string> Errors = [];
         protected ActionResult CustomResponse(object? result = null)
         {
-            if(ValidOperation()) return Ok(result);
+            if (ValidOperation()) return Ok(result);
 
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
