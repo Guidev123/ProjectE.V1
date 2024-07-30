@@ -25,4 +25,8 @@
     <Folder Include="ValueObjects\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\LP.Core\LP.Core.csproj" />
+  </ItemGroup>
+
 </Project>

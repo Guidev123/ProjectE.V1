@@ -6,9 +6,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace LP.Authentication.API.Extensions;
+namespace LP.Authentication.API.Extensions.JasonWebToken;
 
-public class Jwt(IOptions<AppSettings> appSettings, UserManager<IdentityUser> userManager) : IJwt
+public class JsonWebTokenHandler(IOptions<AppSettings> appSettings, UserManager<IdentityUser> userManager) : IJsonWebTokenHandler
 {
     private readonly UserManager<IdentityUser> _userManager = userManager;
     private readonly AppSettings _appSettings = appSettings.Value;

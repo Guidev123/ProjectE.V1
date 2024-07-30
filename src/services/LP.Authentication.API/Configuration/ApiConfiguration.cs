@@ -1,5 +1,6 @@
 ﻿using LP.Authentication.API.Data;
 using LP.Authentication.API.Extensions;
+using LP.Authentication.API.Extensions.JasonWebToken;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -65,7 +66,7 @@ namespace LP.Authentication.API.Configuration
         }
         public static void ResolveDependencies(this WebApplicationBuilder builder) {
 
-            builder.Services.AddScoped<IJwt, Jwt>();
+            builder.Services.AddScoped<IJsonWebTokenHandler, JsonWebTokenHandler>();
         }
     }
 }
