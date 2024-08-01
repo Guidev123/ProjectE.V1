@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LP.Core.Requests
+namespace LP.Core.Commands
 {
     public abstract class Command
     {

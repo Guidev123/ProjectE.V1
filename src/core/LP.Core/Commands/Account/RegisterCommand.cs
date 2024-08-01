@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LP.Core.Requests.Account
+namespace LP.Core.Commands.Account
 {
     public class RegisterCommand : Command
     {

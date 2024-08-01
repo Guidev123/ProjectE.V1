@@ -1,4 +1,4 @@
-﻿using LP.Core.Requests.Account;
+﻿using LP.Core.Commands.Account;
 using LP.Core.Responses;
 using System;
 using System.Collections.Generic;
