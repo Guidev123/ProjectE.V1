@@ -1,4 +1,4 @@
-﻿using LP.Core.User;
+﻿using LP.Shared.User;
 
 namespace Lp.WebApp.Configuration;
 

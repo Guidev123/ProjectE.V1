@@ -1,5 +1,5 @@
 ﻿using Lp.WebApp.Configuration;
-using LP.Core.User;
+using LP.Shared.User;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http;
 using System.Net.Http.Json;

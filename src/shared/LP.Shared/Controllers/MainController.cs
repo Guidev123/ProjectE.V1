@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LP.Core.Controllers
+namespace LP.Shared.Controllers
 {
     [ApiController]
     public abstract class MainController : ControllerBase

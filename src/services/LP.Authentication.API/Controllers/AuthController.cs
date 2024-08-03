@@ -1,7 +1,7 @@
 ﻿using LP.Authentication.API.DTO;
 using LP.Authentication.API.Extensions;
 using LP.Authentication.API.Extensions.JasonWebToken;
-using LP.Core.Controllers;
+using LP.Shared.Controllers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;

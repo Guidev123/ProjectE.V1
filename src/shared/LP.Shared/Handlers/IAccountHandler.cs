@@ -1,12 +1,12 @@
-﻿using LP.Core.Commands.Account;
-using LP.Core.Responses;
+﻿using LP.Shared.Responses;
+using LP.Shared.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LP.Core.Handlers
+namespace LP.Shared.Handlers
 {
     public interface IAccountHandler
     {

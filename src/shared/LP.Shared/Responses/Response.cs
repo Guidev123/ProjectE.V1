@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace LP.Core.Responses
+namespace LP.Shared.Responses
 {
     public class Response<TData>
     {

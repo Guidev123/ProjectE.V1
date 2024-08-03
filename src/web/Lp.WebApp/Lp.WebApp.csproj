@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\core\LP.Core\LP.Core.csproj" />
+    <ProjectReference Include="..\..\shared\LP.Shared\LP.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

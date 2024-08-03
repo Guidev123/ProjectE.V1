@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LP.Core.User;
+namespace LP.Shared.User;
 
 public interface IUserManager
 {

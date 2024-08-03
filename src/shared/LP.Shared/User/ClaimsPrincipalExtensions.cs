@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace LP.Core.User;
+namespace LP.Shared.User;
 
 public static class ClaimsPrincipalExtensions
 {
