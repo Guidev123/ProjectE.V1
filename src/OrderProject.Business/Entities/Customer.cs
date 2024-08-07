@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace OrderProject.Business.Entities
 {
-    public class Customer
+    public class Customer : Entity
     {
-        public Customer(Guid id, string name, Cpf cpf, Email email, Phone phone)
+        public Customer(string name, Cpf cpf, Email email, Phone phone)
         {
-            Id = id;
             Name = name;
             Cpf = cpf;
             Email = email;
             Phone = phone;
         }
-        public Guid Id { get; private set; }
         public string Name { get; private set; } 
         public Phone Phone { get; private set; }
         public Cpf Cpf { get; private set; } 
