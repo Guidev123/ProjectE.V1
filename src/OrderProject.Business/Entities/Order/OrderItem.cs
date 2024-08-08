@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.Entities
+namespace OrderProject.Business.Entities.Order
 {
     public class OrderItem : Entity
     {
@@ -24,7 +24,7 @@ namespace OrderProject.Business.Entities
         public string? ProductImage { get; set; }
 
         internal decimal CalculateValue() => Quantity * UnitaryValue;
-   
+
         //EF rel
         public Order Order { get; set; } = null!;
         protected OrderItem() { }

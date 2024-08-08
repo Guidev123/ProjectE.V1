@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace OrderProject.Business.Enums
 {
-    public enum EStatusOrder
+    public enum EDiscountType
     {
-        Authorized = 1,
-        Paid = 2,
-        NotAuthorized = 3,
-        Canceled = 4
+        Percentage = 1,
+        Amount = 2
     }
 }
