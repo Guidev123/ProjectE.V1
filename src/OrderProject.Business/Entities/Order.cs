@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrderProject.Business.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,8 +26,8 @@ namespace OrderProject.Business.Entities
         public decimal Discount { get; private set; }
         public DateTime OrderDate { get; private set; }
         public decimal TotalPrice { get; private set; }
-        public EOrderStatus OrderStatus { get; set; }
-        private readonly List<OrderItem> _orderItems;
-        public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
+        public EStatusOrder StatusOrder { get; set; }
+        private readonly List<OrderItem>? _orderItems;
+        public IReadOnlyCollection<OrderItem>? OrderItems => _orderItems;
     }
 }
