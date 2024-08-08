@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.Entities.Order
+namespace OrderProject.Domain.Entities.Order
 {
     public class Address
     {
@@ -20,12 +20,12 @@ namespace OrderProject.Business.Entities.Order
             State = state;
         }
         public string Street { get; private set; }
-        public string Number { get; private set; } 
-        public string Complement { get; private set; } 
-        public string Neighborhood { get; private set; } 
-        public string PostalCode { get; private set; } 
-        public string City { get; private set; } 
-        public string State { get; private set; } 
+        public string Number { get; private set; }
+        public string Complement { get; private set; }
+        public string Neighborhood { get; private set; }
+        public string PostalCode { get; private set; }
+        public string City { get; private set; }
+        public string State { get; private set; }
     }
 
 }

@@ -1,11 +1,11 @@
-﻿using OrderProject.Business.Utils;
+﻿using OrderProject.Domain.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.ValueObject
+namespace OrderProject.Domain.ValueObject
 {
     public class Cpf
     {

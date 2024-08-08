@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.Enums
+namespace OrderProject.Domain.Enums
 {
     public enum EStatusOrder
     {

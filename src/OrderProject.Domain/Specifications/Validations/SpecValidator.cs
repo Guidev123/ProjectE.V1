@@ -1,12 +1,12 @@
 ﻿using FluentValidation.Results;
-using OrderProject.Business.ValueObject;
+using OrderProject.Domain.ValueObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.Specifications.Validations
+namespace OrderProject.Domain.Specifications.Validations
 {
     public class SpecValidator<T>
     {

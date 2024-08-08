@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.Entities
+namespace OrderProject.Domain.Entities
 {
     public abstract class Entity
     {

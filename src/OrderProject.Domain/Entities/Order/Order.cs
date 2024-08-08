@@ -1,13 +1,14 @@
-﻿using OrderProject.Business.Entities.Vouchers;
-using OrderProject.Business.Enums;
-using OrderProject.Business.ValueObject;
+﻿using OrderProject.Domain.Entities;
+using OrderProject.Domain.Entities.Vouchers;
+using OrderProject.Domain.Enums;
+using OrderProject.Domain.ValueObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.Entities.Order
+namespace OrderProject.Domain.Entities.Order
 {
     public class Order : Entity
     {
@@ -36,7 +37,7 @@ namespace OrderProject.Business.Entities.Order
         public void AuthorizedOrder() => StatusOrder = EStatusOrder.Authorized;
         public void NotAuthorizedOrder() => StatusOrder = EStatusOrder.NotAuthorized;
         public void PayOrder() => StatusOrder = EStatusOrder.Paid;
-        public void GetAddress(Address address) => Address = address; 
+        public void GetAddress(Address address) => Address = address;
         public void ApplyVoucher(Voucher voucher)
         {
             VoucherUsed = true;
@@ -61,7 +62,7 @@ namespace OrderProject.Business.Entities.Order
             {
                 if (Voucher.Percentage.HasValue)
                 {
-                    discount = (value * Voucher.Percentage.Value) / 100;
+                    discount = value * Voucher.Percentage.Value / 100;
                     value -= discount;
                 }
             }

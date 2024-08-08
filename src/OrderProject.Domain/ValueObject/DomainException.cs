@@ -1,5 +1,4 @@
-﻿
-namespace OrderProject.Business.ValueObject
+﻿namespace OrderProject.Domain.ValueObject
 {
     [Serializable]
     internal class DomainException : Exception

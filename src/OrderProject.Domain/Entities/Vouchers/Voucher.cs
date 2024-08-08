@@ -1,12 +1,13 @@
-﻿using OrderProject.Business.Entities.Vouchers.Specs;
-using OrderProject.Business.Enums;
+﻿using OrderProject.Domain.Entities;
+using OrderProject.Domain.Entities.Vouchers.Specs;
+using OrderProject.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.Entities.Vouchers
+namespace OrderProject.Domain.Entities.Vouchers
 {
     public class Voucher : Entity
     {

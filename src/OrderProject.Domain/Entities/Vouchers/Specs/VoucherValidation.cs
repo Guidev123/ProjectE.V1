@@ -1,11 +1,12 @@
-﻿using OrderProject.Business.Specifications.Validations;
+﻿using OrderProject.Domain.Entities.Vouchers;
+using OrderProject.Domain.Specifications.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.Entities.Vouchers.Specs
+namespace OrderProject.Domain.Entities.Vouchers.Specs
 {
     public class VoucherValidation : SpecValidator<Voucher>
     {

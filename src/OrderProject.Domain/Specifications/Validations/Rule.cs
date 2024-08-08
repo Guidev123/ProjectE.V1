@@ -1,10 +1,11 @@
-﻿using System;
+﻿using OrderProject.Domain.Specifications;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.Specifications.Validations
+namespace OrderProject.Domain.Specifications.Validations
 {
     public class Rule<T>
     {

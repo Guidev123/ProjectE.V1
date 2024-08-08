@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace OrderProject.Business.ValueObject
+namespace OrderProject.Domain.ValueObject
 {
     public class Phone
     {

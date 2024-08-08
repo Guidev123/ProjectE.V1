@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderProject.Business.Specifications
+namespace OrderProject.Domain.Specifications
 {
     public abstract class Specification<T>
     {

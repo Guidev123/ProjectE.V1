@@ -1,7 +1,8 @@
-﻿using OrderProject.Business.Specifications;
+﻿using OrderProject.Domain.Entities.Vouchers;
+using OrderProject.Domain.Specifications;
 using System.Linq.Expressions;
 
-namespace OrderProject.Business.Entities.Vouchers.Specs
+namespace OrderProject.Domain.Entities.Vouchers.Specs
 {
     public class ActiveVoucherSpecification : Specification<Voucher>
     {

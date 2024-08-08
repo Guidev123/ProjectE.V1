@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace OrderProject.Business.Specifications
+namespace OrderProject.Domain.Specifications
 {
     internal sealed class NotSpecification<T> : Specification<T>
     {
