@@ -33,6 +33,8 @@ namespace OrderProject.Domain.Entities.Order
         public EStatusOrder StatusOrder { get; private set; }
         private readonly List<OrderItem>? _orderItems;
         public IReadOnlyCollection<OrderItem>? OrderItens => _orderItems;
+        public Voucher? Voucher { get; private set; }
+        public Address? Address { get; private set; }
 
         public void AuthorizedOrder() => StatusOrder = EStatusOrder.Authorized;
         public void NotAuthorizedOrder() => StatusOrder = EStatusOrder.NotAuthorized;
@@ -82,8 +84,5 @@ namespace OrderProject.Domain.Entities.Order
 
         //EF relation
         protected Order() { }
-        public Voucher? Voucher { get; private set; }
-        public Address? Address { get; private set; }
-
     }
 }
