@@ -27,7 +27,7 @@ namespace OrderProject.Domain.Entities.Order
         public Guid CustomerId { get; private set; }
         public Guid? VoucherId { get; private set; }
         public bool VoucherUsed { get; private set; }
-        public decimal Discount { get; private set; }
+        public decimal? Discount { get; private set; }
         public DateTime OrderDate { get; private set; }
         public decimal TotalPrice { get; private set; }
         public EStatusOrder StatusOrder { get; private set; }
@@ -35,7 +35,7 @@ namespace OrderProject.Domain.Entities.Order
         public IReadOnlyCollection<OrderItem>? OrderItens => _orderItems;
         public Voucher? Voucher { get; private set; }
         public Address? Address { get; private set; }
-
+        public Entities.Customer.Customer? Customer { get; set; }
         public void AuthorizedOrder() => StatusOrder = EStatusOrder.Authorized;
         public void NotAuthorizedOrder() => StatusOrder = EStatusOrder.NotAuthorized;
         public void PayOrder() => StatusOrder = EStatusOrder.Paid;

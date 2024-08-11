@@ -10,10 +10,15 @@ namespace OrderProject.Domain.ValueObject
 {
     public class Phone
     {
+        public string? PhoneNumber { get; private set; }
+        public const int PhoneNumberMaxLength = 254;
+
+        protected Phone() { }
         public Phone(string number)
         {
             if (string.IsNullOrWhiteSpace(number)) throw new DomainException("Phone number cannot be empty.");
             if (!IsValidPhoneNumber(number)) throw new DomainException("Invalid phone number format.");
+            PhoneNumber = number;
         }
 
         private bool IsValidPhoneNumber(string number)

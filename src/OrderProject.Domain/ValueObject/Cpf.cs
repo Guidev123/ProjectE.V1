@@ -10,17 +10,15 @@ namespace OrderProject.Domain.ValueObject
     public class Cpf
     {
         public const int CpfMax = 11;
-        public string Numero { get; private set; }
+        public string? Number { get; private set; }
 
         //CTOR EF
         protected Cpf() { }
-
-        public Cpf(string numero)
+        public Cpf(string number)
         {
-            if (!CpfValidator(numero)) throw new DomainException("CPF is inválid");
-            Numero = numero;
+            if (!CpfValidator(number)) throw new DomainException("CPF is inválid");
+            Number = number;
         }
-
 
         public static bool CpfValidator(string cpf)
         {

@@ -11,15 +11,15 @@ namespace OrderProject.Domain.ValueObject
     {
         public const int EnderecoMaxLength = 254;
         public const int EnderecoMinLength = 5;
-        public string Endereco { get; private set; }
+        public string? Address { get; private set; }
 
         //CTOR EntityFramework
         protected Email() { }
 
-        public Email(string endereco)
+        public Email(string address)
         {
-            if (!Validar(endereco)) throw new DomainException("E-mail is invalid");
-            Endereco = endereco;
+            if (!Validar(address)) throw new DomainException("E-mail is invalid");
+            Address = address;
         }
 
         public static bool Validar(string email)

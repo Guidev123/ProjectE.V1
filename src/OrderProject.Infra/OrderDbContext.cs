@@ -22,7 +22,7 @@ namespace OrderProject.Infra
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(e =>
-                e.GetProperties().Where(p => p.ClrType == typeof(string))))property.SetColumnType("varchar(100)");
+                e.GetProperties().Where(p => p.ClrType == typeof(string))))property.SetColumnType("VARCHAR(100)");
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(OrderDbContext).Assembly);
         }
