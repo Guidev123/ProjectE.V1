@@ -1,10 +1,14 @@
 using HealthLife.UserAPI.Data;
 using HealthLife.UserAPI.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using ProjectE.UserAPI.DTOs;
+using ProjectE.UserAPI.Middlewares;
 using System;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,9 +20,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddIdentityCore<User>().AddRoles<IdentityRole<long>>().AddEntityFrameworkStores<UserDbContext>().AddApiEndpoints();
 
-builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme).AddBearerToken();
-builder.Services.AddAuthorization();
-
+builder.Services.AddJwtConfiguration(builder.Configuration);
 
 
 var app = builder.Build();
