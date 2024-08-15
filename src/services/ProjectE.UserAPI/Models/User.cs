@@ -5,6 +5,7 @@ namespace ProjectE.UserAPI.Models
 {
     public class User : IdentityUser<long>
     {
+        [PersonalData]
         public Cpf Cpf { get; set; } = null!; 
         public List<IdentityRole<long>>? Roles { get; set; }
     }

@@ -11,7 +11,8 @@ namespace ProjectE.UserAPI.Middlewares
         public static void AddDbContextMiddleware(this WebApplicationBuilder builder) => builder.Services.AddDbContext<UserDbContext>(
                     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        public static void AddIdentityMiddleware(this WebApplicationBuilder builder) => builder.Services.AddIdentityCore<User>().AddRoles<IdentityRole<long>>().AddEntityFrameworkStores<UserDbContext>().AddApiEndpoints();
+        public static void AddIdentityMiddleware(this WebApplicationBuilder builder) => builder.Services.AddIdentityCore<User>()
+            .AddRoles<IdentityRole<long>>().AddEntityFrameworkStores<UserDbContext>().AddApiEndpoints();
         public static void AddEnvMiddleware(this WebApplicationBuilder builder) => builder.Configuration
                 .SetBasePath(builder.Environment.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
