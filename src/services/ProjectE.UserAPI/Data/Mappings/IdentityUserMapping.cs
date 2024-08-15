@@ -1,11 +1,11 @@
-﻿using HealthLife.UserAPI.Models;
-using HealthLife.UserAPI.ValueObjects;
+﻿using ProjectE.UserAPI.Models;
+using ProjectE.UserAPI.ValueObjects;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace HealthLife.UserAPI.Data.Mappings
+namespace ProjectE.UserAPI.Data.Mappings
 {
     public class IdentityUserMapping : IEntityTypeConfiguration<User>
     {

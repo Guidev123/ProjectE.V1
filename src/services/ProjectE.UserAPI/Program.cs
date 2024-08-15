@@ -1,39 +1,27 @@
-using HealthLife.UserAPI.Data;
-using HealthLife.UserAPI.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ProjectE.UserAPI.Data;
+using ProjectE.UserAPI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using ProjectE.UserAPI.DTOs;
 using ProjectE.UserAPI.Middlewares;
-using System;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<UserDbContext>(
-                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddIdentityCore<User>().AddRoles<IdentityRole<long>>().AddEntityFrameworkStores<UserDbContext>().AddApiEndpoints();
-
-builder.Services.AddJwtConfiguration(builder.Configuration);
-
+builder.AddEnvMiddleware();
+builder.AddDbContextMiddleware();
+builder.AddIdentityMiddleware();
+builder.AddAuthenticationSchemeMiddleware();
+builder.AddCorsMiddleware();
+builder.Services.AddDocumentationMiddleware(builder.Configuration);
 
 var app = builder.Build();
 
 
-app.UseAuthentication();
-app.UseAuthorization();
-
 if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    app.UseDevEnvironment();
+
+app.UseSecurity();
+//app.MapEndpoints();
 
 app.MapGroup("ap/identity").WithTags("Identity").MapIdentityApi<User>();
 
@@ -48,7 +36,7 @@ app.MapPost("/register", async (RegisterDTO model, UserManager<User> userManager
     {
         UserName = model.Email,
         Email = model.Email,
-        Cpf = new HealthLife.UserAPI.ValueObjects.Cpf(model.Cpf)
+        Cpf = new ProjectE.UserAPI.ValueObjects.Cpf(model.Cpf)
     };
 
     var result = await userManager.CreateAsync(user, model.Password);

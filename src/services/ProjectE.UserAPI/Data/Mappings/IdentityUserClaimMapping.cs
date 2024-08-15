@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HealthLife.UserAPI.Data.Mappings
+namespace ProjectE.UserAPI.Data.Mappings
 {
     public class IdentityUserClaimMapping : IEntityTypeConfiguration<IdentityUserClaim<long>>
     {

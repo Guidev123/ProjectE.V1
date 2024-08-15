@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace HealthLife.UserAPI.Migrations
+namespace ProjectE.UserAPI.Migrations
 {
     /// <inheritdoc />
     public partial class UserV1 : Migration

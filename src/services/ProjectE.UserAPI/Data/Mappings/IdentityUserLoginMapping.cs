@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HealthLife.UserAPI.Models;
+using ProjectE.UserAPI.Models;
 
-namespace HealthLife.UserAPI.Data.Mappings
+namespace ProjectE.UserAPI.Data.Mappings
 {
     public class IdentityUserLoginMapping : IEntityTypeConfiguration<IdentityUserLogin<long>>
     {

@@ -1,6 +1,6 @@
 ﻿using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace HealthLife.UserAPI.ValueObjects
+namespace ProjectE.UserAPI.ValueObjects
 {
     public class Cpf
     {

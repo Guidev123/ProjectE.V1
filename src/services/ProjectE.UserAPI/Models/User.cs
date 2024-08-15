@@ -1,7 +1,7 @@
-﻿using HealthLife.UserAPI.ValueObjects;
+﻿using ProjectE.UserAPI.ValueObjects;
 using Microsoft.AspNetCore.Identity;
 
-namespace HealthLife.UserAPI.Models
+namespace ProjectE.UserAPI.Models
 {
     public class User : IdentityUser<long>
     {

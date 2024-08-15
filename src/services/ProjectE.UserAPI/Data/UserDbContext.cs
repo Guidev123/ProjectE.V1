@@ -1,12 +1,12 @@
-﻿using HealthLife.UserAPI.Data.Mappings;
-using HealthLife.UserAPI.Models;
+﻿using ProjectE.UserAPI.Data.Mappings;
+using ProjectE.UserAPI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Reflection;
 
-namespace HealthLife.UserAPI.Data;
+namespace ProjectE.UserAPI.Data;
 
 public class UserDbContext(DbContextOptions<UserDbContext> options) : IdentityDbContext<User, IdentityRole<long>,
         long, IdentityUserClaim<long>, IdentityUserRole<long>, IdentityUserLogin<long>, IdentityRoleClaim<long>, IdentityUserToken<long>>(options)
