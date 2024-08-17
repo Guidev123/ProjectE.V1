@@ -17,7 +17,7 @@ namespace ProjectE.WebApp.Handler
         }
         public async Task<Response<string>> RegisterAsync(RegisterCommand command)
         {
-            var result = await _client.PostAsJsonAsync("api/custom-identity/register", command);
+            var result = await _client.PostAsJsonAsync("api/identity/register-custom", command);
             return result.IsSuccessStatusCode ? new Response<string>("Cadastro realizado!", 201, "Cadastro realizado!") : new Response<string>(null, 400, "Não foi possivel criar sua conta");
         }
         public async Task LogoutAsync()
