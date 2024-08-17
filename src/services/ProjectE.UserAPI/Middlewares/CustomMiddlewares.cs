@@ -36,8 +36,8 @@ namespace ProjectE.UserAPI.Middlewares
         }
         public static void AddAuthenticationSchemeMiddleware(this WebApplicationBuilder builder)
         {
-            builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
-
+            builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
+                .AddIdentityCookies();
             builder.Services.AddAuthorization();
         }
 
@@ -47,9 +47,10 @@ namespace ProjectE.UserAPI.Middlewares
             {
                 options.AddPolicy("Total", policy =>
                 {
-                    policy.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
+                    policy.WithOrigins("https://localhost:44344")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
                 });
             });
         }
