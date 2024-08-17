@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace ProjectE.UserAPI.ValueObjects
+﻿namespace ProjectE.UserAPI.ValueObjects
 {
     public class Cpf
     {
