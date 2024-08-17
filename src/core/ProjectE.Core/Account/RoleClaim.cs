@@ -1,6 +1,6 @@
-﻿namespace ProjectE.UserAPI.DTOs
+﻿namespace ProjectE.Core.Account
 {
-    public class RoleClaimDTO
+    public class RoleClaim
     {
         public string? Issuer { get; set; }
         public string? OriginalIssuer { get; set; }

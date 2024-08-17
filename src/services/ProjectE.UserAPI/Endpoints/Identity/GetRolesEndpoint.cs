@@ -1,5 +1,5 @@
 ﻿
-using ProjectE.UserAPI.DTOs;
+using ProjectE.Core.Account;
 using System.Security.Claims;
 
 namespace ProjectE.UserAPI.Endpoints.Identity
@@ -16,7 +16,7 @@ namespace ProjectE.UserAPI.Endpoints.Identity
             var identity = (ClaimsIdentity)user.Identity;
             var roles = identity
                 .FindAll(identity.RoleClaimType)
-                .Select(c => new RoleClaimDTO
+                .Select(c => new RoleClaim
                 {
                     Issuer = c.Issuer,
                     OriginalIssuer = c.OriginalIssuer,
