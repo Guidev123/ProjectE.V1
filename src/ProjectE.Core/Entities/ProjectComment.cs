@@ -21,7 +21,7 @@ namespace ProjectE.Core.Entities
 
         // EF Relation
         protected ProjectComment() { }
-        public Project? Project { get; private set; }
-        public Customer? Customer { get; private set; }
+        public Project Project { get; set; } = null!;
+        public Customer Customer { get; set; } = null!;
     }
 }

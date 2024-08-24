@@ -1,4 +1,4 @@
-﻿namespace ProjectE.API.DTOs.Skills
+﻿namespace ProjectE.Application.DTOs.Skills
 {
     public class CreateSkillDTO
     {

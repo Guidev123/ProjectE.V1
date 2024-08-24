@@ -1,6 +1,6 @@
 ﻿using ProjectE.Core.Entities;
 
-namespace ProjectE.API.DTOs.Projects
+namespace ProjectE.Application.DTOs.Projects
 {
     public class ProjectItemDTO
     {
@@ -18,5 +18,8 @@ namespace ProjectE.API.DTOs.Projects
         public string CustomerName { get; private set; }
         public string FreelancerName { get; private set; }
         public decimal TotalPrice { get; private set; }
+
+        public static ProjectItemDTO FromEntity(Project project)
+            => new(project.Id, project.Title, project.Customer.Name, project.Freelancer.Name, project.TotalPrice);
     }
 }

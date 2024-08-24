@@ -1,4 +1,4 @@
-﻿namespace ProjectE.API.DTOs.Projects
+﻿namespace ProjectE.Application.DTOs.Projects
 {
     public class UpdateProjectDTO
     {

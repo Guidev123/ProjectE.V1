@@ -17,7 +17,7 @@ namespace ProjectE.Infrastructure.Configuration
         }
         private static void AddData(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            string connectionString = configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
             services.AddDbContext<ProjectEDbContext>(o => o.UseSqlServer(connectionString));
         }
     }

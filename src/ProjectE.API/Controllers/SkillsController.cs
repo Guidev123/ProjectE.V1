@@ -8,13 +8,29 @@ namespace ProjectE.API.Controllers
     public class SkillsController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult> GetAllAsync()
+        {
+            return Ok();
+        }
+        [HttpGet]
+        public async Task<ActionResult> GetByIdAsync()
+        {
+            return Ok();
+        }
+        [HttpPost]
+        public async Task<ActionResult> PostAsync()
         {
             return Ok();
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Post()
+        [HttpPut]
+        public async Task<ActionResult> PutAsync()
+        {
+            return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteAsync()
         {
             return Ok();
         }

@@ -17,13 +17,11 @@ namespace ProjectE.Infrastructure.Mappings
 
             builder.HasKey(p => p.Id);
 
-            builder.HasOne(p => p.Freelancer)
-                .WithMany(f => f.FreelanceProjects)
+            builder.HasOne(p => p.Freelancer).WithMany(f => f.FreelanceProjects)
                 .HasForeignKey(p => p.FreelancerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(p => p.Customer)
-                .WithMany(c => c.OwnedProjects)
+            builder.HasOne(p => p.Customer).WithMany(c => c.OwnedProjects)
                 .HasForeignKey(p => p.CustomerId)
                 .OnDelete(DeleteBehavior.Restrict);
         }

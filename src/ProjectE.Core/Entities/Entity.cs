@@ -7,7 +7,7 @@ public abstract class Entity
         IsDeleted = false;
     }
     public Guid Id { get; }
-    public DateTime CreatedAt { get; }
+    public DateTime? CreatedAt { get; }
     public bool IsDeleted { get; private set; } 
     public void SetEntityAsDeleted() => IsDeleted = true;
 

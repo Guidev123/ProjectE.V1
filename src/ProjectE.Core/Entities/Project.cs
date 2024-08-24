@@ -9,28 +9,26 @@ namespace ProjectE.Core.Entities
 {
     public class Project : Entity
     {
-        public Project(Guid customerId, string title, string description, decimal totalPrice, DateTime? startedAt,
-                       DateTime? completedAt, EProjectStatus projectStatus, List<ProjectComment> comments) : base()
+        public Project(Guid customerId, Guid freelancerId, string title, string description, decimal totalPrice) : base()
         {
             CustomerId = customerId;
+            FreelancerId = freelancerId;
             Title = title;
             Description = description;
             TotalPrice = totalPrice;
-            StartedAt = startedAt;
-            CompletedAt = completedAt;
             ProjectStatus = EProjectStatus.Created;
             Comments = [];
         }
 
         public Guid CustomerId { get; private set; }
         public Guid FreelancerId { get; private set; }
-        public string Title { get; private set; }
-        public string Description { get; private set; }
+        public string Title { get; private set; } = string.Empty;
+        public string Description { get; private set; } = string.Empty;
         public decimal TotalPrice { get; private set; }
         public DateTime? StartedAt { get; private set; }
         public DateTime? CompletedAt { get; private set; }
         public EProjectStatus ProjectStatus { get; private set; }
-        public List<ProjectComment> Comments { get; private set; }
+        public List<ProjectComment> Comments { get; private set; } = [];
 
         // EF Relation
         protected Project() { }

@@ -1,4 +1,4 @@
-﻿namespace ProjectE.API.DTOs.Customers
+﻿namespace ProjectE.Application.DTOs.Customers
 {
     public class CreateCustomerDTO
     {

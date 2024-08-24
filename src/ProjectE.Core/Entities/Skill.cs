@@ -12,7 +12,7 @@ namespace ProjectE.Core.Entities
         {
             Description = description;
         }
-        public string? Description { get; private set; }
+        public string Description { get; private set; }
         public List<CustomerSkill>? CustomerSkills { get; private set; }
 
     }

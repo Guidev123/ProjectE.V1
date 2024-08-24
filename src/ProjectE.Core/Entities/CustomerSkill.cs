@@ -19,7 +19,7 @@ namespace ProjectE.Core.Entities
 
         // EF Relation
         protected CustomerSkill() { }
-        public Customer? Customer { get; private set; }
-        public Skill? Skill { get; private set; }
+        public Customer Customer { get; set; } = null!;
+        public Skill Skill { get; set; } = null!;
     }
 }
