@@ -1,9 +1,12 @@
-using ProjectE.API.Extensions;
+using ProjectE.Application.Configuration;
 using ProjectE.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
+
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

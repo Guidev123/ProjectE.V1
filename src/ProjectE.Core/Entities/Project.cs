@@ -61,6 +61,7 @@ namespace ProjectE.Core.Entities
             if (ProjectStatus is EProjectStatus.InProgress)
                 ProjectStatus = EProjectStatus.WaitingPayment;
         }
+        
         public void Update(string title, string description, decimal totalPrice)
         {
             Title = title;
