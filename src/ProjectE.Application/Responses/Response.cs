@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectE.Application.DTOs
+namespace ProjectE.Application.Responses
 {
     public class Response
     {
@@ -32,3 +32,4 @@ namespace ProjectE.Application.DTOs
         public static new Response<T> Error(string message) => new(default, false, message);
     }
 }
+

@@ -1,11 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ProjectE.Application.Services;
-using ProjectE.Application.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProjectE.Application.Commands.Projects.CreateComment;
+using ProjectE.Application.Commands.Projects.CreateProject;
 
 namespace ProjectE.Application.Configuration
 {
@@ -13,12 +8,12 @@ namespace ProjectE.Application.Configuration
     {
         public static void AddApplication(this IServiceCollection services)
         {
-            AddServices(services);
+            services.AddHandlers();
         }
 
-        public static void AddServices(this IServiceCollection services)
+        public static void AddHandlers(this IServiceCollection services)
         {
-            services.AddTransient<IProjectService, ProjectService>();
+            services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<CreateProjectCommand>());
         }
     }
 }

@@ -1,6 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ProjectE.Application.DTOs.Projects;
-using ProjectE.Application.Services.Interfaces;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using ProjectE.Application.Commands.Projects.CompleteProject;
+using ProjectE.Application.Commands.Projects.CreateProject;
+using ProjectE.Application.Commands.Projects.DeleteProject;
+using ProjectE.Application.Commands.Projects.StartProject;
+using ProjectE.Application.Commands.Projects.UpdateProject;
+using ProjectE.Application.Queries.Projects.GetAllProjects;
+using ProjectE.Application.Queries.Projects.GetProjectById;
 
 namespace ProjectE.API.Controllers
 {
@@ -8,16 +14,17 @@ namespace ProjectE.API.Controllers
     [Route("api/projects")]
     public class ProjectsController : ControllerBase
     {
-        private readonly IProjectService _projectService;
-        public ProjectsController(IProjectService projectService)
+        private readonly IMediator _mediator;
+
+        public ProjectsController(IMediator mediator)
         {
-            _projectService = projectService;
+            _mediator = mediator;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetAllAsync()
         {
-            var result = await _projectService.GetAllProjectsAsync();
+            var result = await _mediator.Send(new GetAllProjectsQuery());
 
             if (!result.IsSuccess) return BadRequest(result.Message);
 
@@ -26,16 +33,16 @@ namespace ProjectE.API.Controllers
         [HttpGet("{id:guid}")]
         public async Task<ActionResult> GetByIdAsync(Guid id)
         {
-            var result = await _projectService.GetProjectByIdAsync(id);
+            var result = await _mediator.Send(new GetProjectByIdQuery(id));
 
             if (!result.IsSuccess) return BadRequest(result.Message);
 
             return Ok(result);
         }
         [HttpPost]
-        public async Task<ActionResult> CreateProjectAsync(CreateProjectDTO createProject)
+        public async Task<ActionResult> CreateProjectAsync(CreateProjectCommand command)
         {
-            var result = await _projectService.CreateProjectAsync(createProject);
+            var result = await _mediator.Send(command);
 
             if (!result.IsSuccess) return BadRequest(result.Message);
 
@@ -43,9 +50,9 @@ namespace ProjectE.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateProjectAsync(UpdateProjectDTO updateProject)
+        public async Task<ActionResult> UpdateProjectAsync(UpdateProjectCommand command)
         {
-            var result = await _projectService.UpdateProjectAsync(updateProject);
+            var result = await _mediator.Send(command);
 
             if (!result.IsSuccess) return BadRequest(result.Message);
 
@@ -55,7 +62,7 @@ namespace ProjectE.API.Controllers
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult> DeleteAsync(Guid id)
         {
-            var result = await _projectService.DeleteProjectAsync(id);
+            var result = await _mediator.Send(new DeleteProjectCommand(id));
 
             if (!result.IsSuccess) return BadRequest(result.Message);
 
@@ -65,7 +72,7 @@ namespace ProjectE.API.Controllers
         [HttpPut("complete/{id:guid}")]
         public async Task<ActionResult> CompleteProjectAsync(Guid id)
         {
-            var result = await _projectService.CompleteProjectAsync(id);
+            var result = await _mediator.Send(new CompleteProjectCommand(id));
 
             if (!result.IsSuccess) return BadRequest(result.Message);
 
@@ -75,17 +82,17 @@ namespace ProjectE.API.Controllers
         [HttpPut("start/{id:guid}")]
         public async Task<ActionResult> StartProjectAsync(Guid id)
         {
-            var result = await _projectService.StartProjectAsync(id);
+            var result = await _mediator.Send(new StartProjectCommand(id));
 
             if (!result.IsSuccess) return BadRequest(result.Message);
 
             return NoContent();
         }
 
-        [HttpPost("comments/{id:guid}")]
-        public async Task<ActionResult> CreateProjectCommentAsync(Guid id, CreateProjectCommentDTO createProjectComment)
+        [HttpPost("comments")]
+        public async Task<ActionResult> CreateProjectCommentAsync(CreateProjectCommand command)
         {
-            var result = await _projectService.CreateProjectCommentAsync(id, createProjectComment);
+            var result = await _mediator.Send(command);
 
             if (!result.IsSuccess) return BadRequest(result.Message);
 
