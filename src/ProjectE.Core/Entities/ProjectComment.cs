@@ -17,7 +17,7 @@ namespace ProjectE.Core.Entities
 
         public Guid ProjectId { get; private set; }
         public Guid CustomerId { get; private set; }
-        public string? Content { get; private set; }
+        public string? Content { get; private set; }    
 
         // EF Relation
         protected ProjectComment() { }

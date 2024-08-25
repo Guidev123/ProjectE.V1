@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectE.Core\ProjectE.Core.csproj" />
+    <ProjectReference Include="..\ProjectE.Infrastructure\ProjectE.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.0" />
   </ItemGroup>
 
 </Project>
