@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using ProjectE.Application.Commands.Projects.CreateComment;
 using ProjectE.Application.Commands.Projects.CreateProject;
+using ProjectE.Application.Responses;
 
 namespace ProjectE.Application.Configuration
 {
@@ -14,6 +16,7 @@ namespace ProjectE.Application.Configuration
         public static void AddHandlers(this IServiceCollection services)
         {
             services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<CreateProjectCommand>());
+
         }
     }
 }
