@@ -1,25 +1,19 @@
 ﻿using MediatR;
 using ProjectE.Application.Responses;
 using ProjectE.Core.Entities;
-using ProjectE.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProjectE.Core.Repositories;
 
 namespace ProjectE.Application.Commands.Projects.CreateProject
 {
-    public class CreateProjectHandler(ProjectEDbContext context) : IRequestHandler<CreateProjectCommand, Response>
+    public class CreateProjectHandler(IProjectRepository projectRepository) : IRequestHandler<CreateProjectCommand, Response>
     {
-        private readonly ProjectEDbContext _context = context;
+        private readonly IProjectRepository _projectRepository = projectRepository;
 
         public async Task<Response> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
             var project = request.ToEntity();
 
-            await _context.Projects.AddAsync(project);
-            await _context.SaveChangesAsync();
+            await _projectRepository.CreateProjectAsync(project);
 
             return Response<Project>.Success(project);
         }
