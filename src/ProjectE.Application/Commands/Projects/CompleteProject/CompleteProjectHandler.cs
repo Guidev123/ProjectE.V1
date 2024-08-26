@@ -22,7 +22,7 @@ namespace ProjectE.Application.Commands.Projects.CompleteProject
             if (project is null) return Response.Error("Projeto nao existente");
 
             project.Complete();
-            
+
             await _projectRepository.UpdateProjectAsync(project);
 
             return Response.Success();

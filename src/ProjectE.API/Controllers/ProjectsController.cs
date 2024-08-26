@@ -16,10 +16,7 @@ namespace ProjectE.API.Controllers
     {
         private readonly IMediator _mediator;
 
-        public ProjectsController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+        public ProjectsController(IMediator mediator) => _mediator = mediator;
 
         [HttpGet]
         public async Task<ActionResult> GetAllAsync()

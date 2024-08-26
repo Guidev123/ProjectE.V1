@@ -2,7 +2,7 @@
 {
     public class CustomerSkillsDTO
     {
-        public Guid[] SkillIds { get; set; } = [];
         public Guid Id { get; set; }
+        public Guid[] SkillIds { get; set; } = [];
     }
 }
