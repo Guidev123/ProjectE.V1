@@ -28,13 +28,18 @@ namespace ProjectE.Infrastructure.Repositories
         public async Task<Customer?> GetCustomerByIdAsync(Guid id)
             =>   await _context.Customers.FindAsync(id);
 
-        public async Task<List<Customer>>? GetCustomerProjectsByIdAsync(Guid id)
-            => await _context.Customers.Include(x => x.OwnedProjects).Include(x => x.FreelanceProjects).Where(x => !x.IsDeleted).ToListAsync(); 
+        public async Task<Customer?> GetCustomerProjectsByIdAsync(Guid id)
+        {
+            var query = await _context.Customers.Include(x => x.OwnedProjects)
+            .Include(x => x.FreelanceProjects).SingleOrDefaultAsync(x => x.Id == id);
+            
+            return query;
+        }
 
         public async Task<bool> CustomerExistsAsync(Guid id)
             => await _context.Customers.Where(x => !x.IsDeleted).AnyAsync(x => x.Id == id); 
 
-        public async Task<List<CustomerSkill>>? GetCustomerSkillByIdAsync(Guid id)
+        public async Task<List<CustomerSkill>> GetCustomerSkillByIdAsync(Guid id)
             => await _context.CustomerSkills.Where(x => x.Id == id && !x.IsDeleted).ToListAsync();
 
     }

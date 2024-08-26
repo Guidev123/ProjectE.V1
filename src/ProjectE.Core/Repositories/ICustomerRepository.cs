@@ -9,9 +9,9 @@ namespace ProjectE.Core.Repositories
 {
     public interface ICustomerRepository
     {
-        Task<List<Customer>>? GetCustomerProjectsByIdAsync(Guid id);
+        Task<Customer?> GetCustomerProjectsByIdAsync(Guid id);
         Task<Customer?> GetCustomerByIdAsync(Guid id);
-        Task<List<CustomerSkill>>? GetCustomerSkillByIdAsync(Guid id);
+        Task<List<CustomerSkill>> GetCustomerSkillByIdAsync(Guid id);
         Task<Customer> CreateCustomerAsync(Customer customer);
         Task<bool> CustomerExistsAsync(Guid id);
         Task UpdateCustomerAsync(Customer customer);

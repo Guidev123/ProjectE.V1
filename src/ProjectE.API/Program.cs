@@ -1,6 +1,7 @@
 using ProjectE.Application.Configuration;
 using ProjectE.Infrastructure.Configuration;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddInfrastructure(builder.Configuration);

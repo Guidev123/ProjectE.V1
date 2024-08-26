@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectE.Application.Commands.Customers.CreateCustomers;
 using ProjectE.Application.Commands.Customers.DeleteCustomers;
 using ProjectE.Application.Queries.Customers.GetCustomerById;
+using ProjectE.Application.Queries.Customers.GetCustomerProjectsById;
 
 namespace ProjectE.API.Controllers
 {
     [ApiController]
-    [Route("api/users")]
+    [Route("api/customers")]
     public class CustomersController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -23,7 +24,15 @@ namespace ProjectE.API.Controllers
 
             return Ok(result);
         }
+        [HttpGet("get-projects/{id:guid}")]
+        public async Task<ActionResult> GetCustomerProjectsByIdAsync(Guid id)
+        {
+            var result = await _mediator.Send(new GetCustomerProjectsByIdQuery(id));
 
+            if (!result.IsSuccess) return BadRequest(result.Message);
+
+            return Ok(result);
+        }
         [HttpPost]
         public async Task<ActionResult> CreateCustomerAsync(CreateCustomerCommand command)
         {
