@@ -2,12 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectE.Core.Repositories;
+using ProjectE.Core.Services;
+using ProjectE.Infrastructure.Auth;
 using ProjectE.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectE.Infrastructure.Configuration
 {
@@ -28,6 +25,7 @@ namespace ProjectE.Infrastructure.Configuration
         {
             services.AddTransient<IProjectRepository, ProjectRepository>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IAuthService, AuthService>();
         }
     }
 }
