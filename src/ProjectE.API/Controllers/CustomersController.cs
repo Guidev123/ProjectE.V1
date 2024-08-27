@@ -4,6 +4,7 @@ using ProjectE.Application.Commands.Customers.CreateCustomers;
 using ProjectE.Application.Commands.Customers.DeleteCustomers;
 using ProjectE.Application.Queries.Customers.GetCustomerById;
 using ProjectE.Application.Queries.Customers.GetCustomerProjectsById;
+using ProjectE.Application.Queries.Skills.GetSkillsByCustomerId;
 
 namespace ProjectE.API.Controllers
 {

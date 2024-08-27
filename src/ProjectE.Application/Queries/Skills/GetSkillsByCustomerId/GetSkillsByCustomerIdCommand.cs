@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectE.Application.Queries.Customers.GetCustomerSkillById
+namespace ProjectE.Application.Queries.Skills.GetSkillsByCustomerId
 {
-    public class GetCustomerSkillByIdQuery : IRequest<Response>
+    public class GetSkillsByCustomerIdCommand : IRequest<Response>
     {
-        public GetCustomerSkillByIdQuery(Guid id)
+        public GetSkillsByCustomerIdCommand(Guid id)
         {
             Id = id;
         }

@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using ProjectE.Application.DTOs.Customers;
+using ProjectE.Application.DTOs.Skills;
 using ProjectE.Application.Responses;
 using ProjectE.Core.Repositories;
 using System;
@@ -15,7 +16,7 @@ namespace ProjectE.Application.Queries.Customers.GetCustomerById
         private readonly ICustomerRepository _customerRepository = customerRepository;
         public async Task<Response> Handle(GetCustomerByIdQuery request, CancellationToken cancellationToken)
         {
-            var customer = await _customerRepository.GetCustomerByIdAsync(request.Id);
+            var customer = await _customerRepository.GetCustomerById(request.Id);
 
             if (customer is null) return Response.Error("Este cliente nao existe");
 

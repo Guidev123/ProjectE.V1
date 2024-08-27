@@ -16,7 +16,10 @@ namespace ProjectE.Application.Commands.Skills.CreateSkill
 
         public async Task<Response> Handle(CreateSkillCommand request, CancellationToken cancellationToken)
         {
+            var skill = request.ToEntity();
+            var createSkill = await _customerRepository.CreateCustomerSkillAsync(skill);
 
+            return Response<Skill>.Success(createSkill);
         }
     }
 }

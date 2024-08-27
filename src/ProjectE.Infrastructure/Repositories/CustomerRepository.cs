@@ -25,8 +25,8 @@ namespace ProjectE.Infrastructure.Repositories
             return customer;
         }
 
-        public async Task<Customer?> GetCustomerByIdAsync(Guid id)
-            =>   await _context.Customers.FindAsync(id);
+        public async Task<Customer?> GetCustomerSkillsByIdAsync(Guid id)
+            =>   await _context.Customers.Include(x => x.Skills).SingleOrDefaultAsync(x => x.Id == id);
 
         public async Task<Customer?> GetCustomerProjectsByIdAsync(Guid id)
         {
@@ -37,10 +37,18 @@ namespace ProjectE.Infrastructure.Repositories
         }
 
         public async Task<bool> CustomerExistsAsync(Guid id)
-            => await _context.Customers.Where(x => !x.IsDeleted).AnyAsync(x => x.Id == id); 
+            => await _context.Customers.Where(x => !x.IsDeleted).AnyAsync(x => x.Id == id);
 
-        public async Task<List<CustomerSkill>> GetCustomerSkillByIdAsync(Guid id)
-            => await _context.CustomerSkills.Where(x => x.Id == id && !x.IsDeleted).ToListAsync();
+        public async Task<Skill> CreateCustomerSkillAsync(Skill skill)
+        {
+           await _context.Skills.AddAsync(skill);
+            await _context.SaveChangesAsync();
+            return skill;
+        }
+
+        public async Task<Customer?> GetCustomerById(Guid id)
+            => await _context.Customers.Include(x => x.OwnedProjects)
+            .Include(x => x.FreelanceProjects).Include(x => x.Skills).SingleOrDefaultAsync(x => x.Id == id);
 
     }
 }

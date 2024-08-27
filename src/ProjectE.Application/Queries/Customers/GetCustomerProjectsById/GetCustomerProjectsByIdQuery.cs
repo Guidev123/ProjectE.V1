@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjectE.Application.Queries.Customers.GetCustomerProjectsById
 {
-    public class GetCustomerProjectsByIdQuery : IRequest<Response<CustomerDTO>>
+    public class GetCustomerProjectsByIdQuery : IRequest<Response<CustomerProjectsDTO>>
     {
         public GetCustomerProjectsByIdQuery(Guid id)
         {
