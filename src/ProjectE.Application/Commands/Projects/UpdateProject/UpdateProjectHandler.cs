@@ -1,29 +1,22 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using ProjectE.Application.Responses;
-using ProjectE.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProjectE.Core.Repositories;
 
 namespace ProjectE.Application.Commands.Projects.UpdateProject
 {
-    public class UpdateProjectHandler(ProjectEDbContext context) : IRequestHandler<UpdateProjectCommand, Response>
+    public class UpdateProjectHandler(IProjectRepository projectRepository) : IRequestHandler<UpdateProjectCommand, Response>
     {
-        private readonly ProjectEDbContext _context = context;
+        private readonly IProjectRepository _projectRepository = projectRepository;
 
         public async Task<Response> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = await _context.Projects.FirstOrDefaultAsync(x => x.Id == request.ProjectId);
+            var project = await _projectRepository.GetProjectByIdAsync(request.ProjectId);
 
             if (project is null) return Response.Error("Projeto nao existente");
 
             project.Update(request.Title, request.Description, request.TotalPrice);
 
-            _context.Projects.Update(project);
-            await _context.SaveChangesAsync();
+            await _projectRepository.UpdateProjectAsync(project);
 
             return Response.Success();
         }

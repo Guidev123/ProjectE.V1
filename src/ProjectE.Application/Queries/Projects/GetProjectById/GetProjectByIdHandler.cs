@@ -1,23 +1,21 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using ProjectE.Application.DTOs.Projects;
 using ProjectE.Application.Responses;
-using ProjectE.Infrastructure;
+using ProjectE.Core.Repositories;
 
 namespace ProjectE.Application.Queries.Projects.GetProjectById
 {
-    public class GetProjectByIdHandler(ProjectEDbContext context) : IRequestHandler<GetProjectByIdQuery, Response<ProjectDTO>>
+    public class GetProjectByIdHandler(IProjectRepository projectRepository) : IRequestHandler<GetProjectByIdQuery, Response<ProjectDTO>>
     {
-        private readonly ProjectEDbContext _context = context;
+        private readonly IProjectRepository _projectRepository = projectRepository;
 
         public async Task<Response<ProjectDTO>> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
-            var query = await _context.Projects.Include(x => x.Customer).Include(x => x.Freelancer)
-                        .Include(x => x.Comments).SingleOrDefaultAsync(x => x.Id == request.Id);
+            var project = await _projectRepository.GetProjectDetailsByIdAsync(request.Id);
 
-            if (query is null) return Response<ProjectDTO>.Error("Projeto nao existente");
+            if (project is null) return Response<ProjectDTO>.Error("Projeto nao existente");
 
-            var result = ProjectDTO.FromEntity(query);
+            var result = ProjectDTO.FromEntity(project);
 
             return Response<ProjectDTO>.Success(result);
         }

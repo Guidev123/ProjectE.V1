@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ProjectE.Application.Commands.Projects.CompleteProject;
+using ProjectE.Application.Commands.Projects.CreateComment;
 using ProjectE.Application.Commands.Projects.CreateProject;
 using ProjectE.Application.Commands.Projects.DeleteProject;
 using ProjectE.Application.Commands.Projects.StartProject;
@@ -16,10 +17,7 @@ namespace ProjectE.API.Controllers
     {
         private readonly IMediator _mediator;
 
-        public ProjectsController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+        public ProjectsController(IMediator mediator) => _mediator = mediator;
 
         [HttpGet]
         public async Task<ActionResult> GetAllAsync()
@@ -90,7 +88,7 @@ namespace ProjectE.API.Controllers
         }
 
         [HttpPost("comments")]
-        public async Task<ActionResult> CreateProjectCommentAsync(CreateProjectCommand command)
+        public async Task<ActionResult> CreateProjectCommentAsync(CreateCommentCommand command)
         {
             var result = await _mediator.Send(command);
 

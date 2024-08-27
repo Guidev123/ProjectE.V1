@@ -10,7 +10,6 @@ public class ProjectEDbContext : DbContext
     public DbSet<Project> Projects { get; set; }
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Skill> Skills { get; set; }
-    public DbSet<CustomerSkill> CustomerSkills { get; set; }
     public DbSet<ProjectComment> ProjectComments { get; set; }  
 
     protected override void OnModelCreating(ModelBuilder builder)

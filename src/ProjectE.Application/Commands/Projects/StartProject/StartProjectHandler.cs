@@ -1,29 +1,22 @@
-﻿using Azure.Core;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
 using ProjectE.Application.Responses;
-using ProjectE.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProjectE.Core.Repositories;
 
 namespace ProjectE.Application.Commands.Projects.StartProject
 {
-    public class StartProjectHandler(ProjectEDbContext context) : IRequestHandler<StartProjectCommand, Response>
+    public class StartProjectHandler(IProjectRepository projectRepository) : IRequestHandler<StartProjectCommand, Response>
     {
-        private readonly ProjectEDbContext _context = context;
+        private readonly IProjectRepository _projectRepository = projectRepository;
 
         public async Task<Response> Handle(StartProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = await _context.Projects.FirstOrDefaultAsync(x => x.Id == request.Id);
+            var project = await _projectRepository.GetProjectByIdAsync(request.Id);
 
             if (project is null) return Response.Error("Projeto nao existente");
 
             project.Start();
-            _context.Projects.Update(project);
-            await _context.SaveChangesAsync();
+
+            await _projectRepository.UpdateProjectAsync(project);
 
             return Response.Success();
         }

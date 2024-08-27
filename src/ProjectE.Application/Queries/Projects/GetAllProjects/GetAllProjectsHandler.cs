@@ -1,21 +1,18 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using ProjectE.Application.DTOs.Projects;
 using ProjectE.Application.Responses;
-using ProjectE.Infrastructure;
+using ProjectE.Core.Repositories;
 
 namespace ProjectE.Application.Queries.Projects.GetAllProjects
 {
-    public class GetAllProjectsHandler(ProjectEDbContext context) : IRequestHandler<GetAllProjectsQuery, Response<List<ProjectItemDTO>>>
+    public class GetAllProjectsHandler(IProjectRepository projectRepository) : IRequestHandler<GetAllProjectsQuery, Response<List<ProjectItemDTO>>>
     {
-        private readonly ProjectEDbContext _context = context;
+        private readonly IProjectRepository _projectRepository = projectRepository;
         public async Task<Response<List<ProjectItemDTO>>> Handle(GetAllProjectsQuery request, CancellationToken cancellationToken)
         {
-            var query = await _context.Projects.AsNoTracking().Include(x => x.Customer).Include(x => x.Freelancer)
-                    .Where(x => !x.IsDeleted)
-                    .ToListAsync();
+            var projects = await _projectRepository.GetAllProjectsAsync();
 
-            var result = query.Select(ProjectItemDTO.FromEntity).ToList();
+            var result = projects.Select(ProjectItemDTO.FromEntity).ToList();
 
             return Response<List<ProjectItemDTO>>.Success(result);
         }

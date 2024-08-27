@@ -1,30 +1,23 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using ProjectE.Application.Responses;
 using ProjectE.Core.Entities;
-using ProjectE.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProjectE.Core.Repositories;
 
 namespace ProjectE.Application.Commands.Projects.CreateComment
 {
-    public class CreateCommentHandler(ProjectEDbContext context) : IRequestHandler<CreateCommentCommand, Response>
+    public class CreateCommentHandler(IProjectRepository projectRepository) : IRequestHandler<CreateCommentCommand, Response>
     {
-        private readonly ProjectEDbContext _context = context;
+        private readonly IProjectRepository _projectRepository = projectRepository;
 
         public async Task<Response> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
-            var project = await _context.Projects.SingleOrDefaultAsync(x => x.Id == request.ProjectId);
+            var exists = await _projectRepository.ProjectExistsAsync(request.ProjectId);
 
-            if (project is null) return Response.Error("Projeto não existente");
+            if (!exists) return Response.Error("Projeto não existente");
 
             var comment = new ProjectComment(request.Content, request.ProjectId, request.CustomerId);
 
-            await _context.ProjectComments.AddAsync(comment);
-            await _context.SaveChangesAsync();
+            await _projectRepository.CreateProjectCommentAsync(comment);
 
             return Response.Success();
         }
