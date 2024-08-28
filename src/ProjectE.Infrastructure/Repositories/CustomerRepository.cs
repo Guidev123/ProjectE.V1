@@ -50,5 +50,7 @@ namespace ProjectE.Infrastructure.Repositories
             => await _context.Customers.Include(x => x.OwnedProjects)
             .Include(x => x.FreelanceProjects).Include(x => x.Skills).SingleOrDefaultAsync(x => x.Id == id);
 
+        public async Task<Customer?> GetCustomerByEmailAndPasswordAsync(string email, string passwordHash)
+            => await _context.Customers.SingleOrDefaultAsync(x => x.Email == email && x.Password == passwordHash);
     }
 }

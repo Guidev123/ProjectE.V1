@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectE.Application.Commands.Customers.CreateCustomers;
 using ProjectE.Application.Commands.Customers.DeleteCustomers;
+using ProjectE.Application.Commands.Customers.LoginCustomer;
 using ProjectE.Application.Queries.Customers.GetCustomerById;
 using ProjectE.Application.Queries.Customers.GetCustomerProjectsById;
 using ProjectE.Application.Queries.Skills.GetSkillsByCustomerId;
@@ -34,8 +35,18 @@ namespace ProjectE.API.Controllers
 
             return Ok(result);
         }
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<ActionResult> CreateCustomerAsync(CreateCustomerCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            if (!result.IsSuccess) return BadRequest(result.Message);
+
+            return Ok(command);
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult> LoginCustomerAsync(LoginCustomerCommand command)
         {
             var result = await _mediator.Send(command);
 

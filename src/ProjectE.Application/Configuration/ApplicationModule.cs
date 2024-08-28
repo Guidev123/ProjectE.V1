@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ProjectE.Application.Commands.Projects.CreateComment;
 using ProjectE.Application.Commands.Projects.CreateProject;
 using ProjectE.Application.Responses;
-using ProjectE.Application.Validators.Projects;
+using ProjectE.Application.Validators.Customers;
 
 namespace ProjectE.Application.Configuration
 {
