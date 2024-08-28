@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectE.Application.Commands.Skills.CreateSkill;
@@ -9,6 +10,7 @@ namespace ProjectE.API.Controllers
 {
     [ApiController]
     [Route("api/skills")]
+    [Authorize]
     public class SkillsController : ControllerBase
     {
         private readonly IMediator _mediator;
