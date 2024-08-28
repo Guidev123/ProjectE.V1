@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectE.Application.Commands.Customers.CreateCustomers;
 using ProjectE.Application.Commands.Customers.DeleteCustomers;
@@ -11,11 +12,34 @@ namespace ProjectE.API.Controllers
 {
     [ApiController]
     [Route("api/customers")]
+    [Authorize]
     public class CustomersController : ControllerBase
     {
         private readonly IMediator _mediator;
         public CustomersController(IMediator mediator) => _mediator = mediator;
 
+
+        [AllowAnonymous]
+        [HttpPost("create")]
+        public async Task<ActionResult> CreateCustomerAsync(CreateCustomerCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            if (!result.IsSuccess) return BadRequest(result.Message);
+
+            return Ok(command);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public async Task<ActionResult> LoginCustomerAsync(LoginCustomerCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            if (!result.IsSuccess) return BadRequest(result.Message);
+
+            return Ok(result);
+        }
 
         [HttpGet("{id:guid}")]
         public async Task<ActionResult> GetCustomerByIdAsync(Guid id)
@@ -30,25 +54,6 @@ namespace ProjectE.API.Controllers
         public async Task<ActionResult> GetCustomerProjectsByIdAsync(Guid id)
         {
             var result = await _mediator.Send(new GetCustomerProjectsByIdQuery(id));
-
-            if (!result.IsSuccess) return BadRequest(result.Message);
-
-            return Ok(result);
-        }
-        [HttpPost("create")]
-        public async Task<ActionResult> CreateCustomerAsync(CreateCustomerCommand command)
-        {
-            var result = await _mediator.Send(command);
-
-            if (!result.IsSuccess) return BadRequest(result.Message);
-
-            return Ok(command);
-        }
-
-        [HttpPost("login")]
-        public async Task<ActionResult> LoginCustomerAsync(LoginCustomerCommand command)
-        {
-            var result = await _mediator.Send(command);
 
             if (!result.IsSuccess) return BadRequest(result.Message);
 

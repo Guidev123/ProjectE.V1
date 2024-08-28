@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectE.Application.Commands.Projects.CompleteProject;
 using ProjectE.Application.Commands.Projects.CreateComment;
@@ -13,6 +14,7 @@ namespace ProjectE.API.Controllers
 {
     [ApiController]
     [Route("api/projects")]
+    [Authorize]
     public class ProjectsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -20,6 +22,7 @@ namespace ProjectE.API.Controllers
         public ProjectsController(IMediator mediator) => _mediator = mediator;
 
         [HttpGet]
+        [Authorize(Roles = "hirer, freelancer")]
         public async Task<ActionResult> GetAllAsync()
         {
             var result = await _mediator.Send(new GetAllProjectsQuery());
@@ -29,6 +32,7 @@ namespace ProjectE.API.Controllers
             return Ok(result);
         }
         [HttpGet("{id:guid}")]
+        [Authorize(Roles = "hirer, freelancer")]
         public async Task<ActionResult> GetByIdAsync(Guid id)
         {
             var result = await _mediator.Send(new GetProjectByIdQuery(id));
@@ -38,6 +42,7 @@ namespace ProjectE.API.Controllers
             return Ok(result);
         }
         [HttpPost]
+        [Authorize(Roles = "hirer")]
         public async Task<ActionResult> CreateProjectAsync(CreateProjectCommand command)
         {
             var result = await _mediator.Send(command);
@@ -48,6 +53,7 @@ namespace ProjectE.API.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "hirer")]
         public async Task<ActionResult> UpdateProjectAsync(UpdateProjectCommand command)
         {
             var result = await _mediator.Send(command);
@@ -58,6 +64,7 @@ namespace ProjectE.API.Controllers
         }
 
         [HttpDelete("{id:guid}")]
+        [Authorize(Roles = "hirer")]
         public async Task<ActionResult> DeleteAsync(Guid id)
         {
             var result = await _mediator.Send(new DeleteProjectCommand(id));
@@ -68,6 +75,7 @@ namespace ProjectE.API.Controllers
         }
 
         [HttpPut("complete/{id:guid}")]
+        [Authorize(Roles = "hirer")]
         public async Task<ActionResult> CompleteProjectAsync(Guid id)
         {
             var result = await _mediator.Send(new CompleteProjectCommand(id));
@@ -78,6 +86,7 @@ namespace ProjectE.API.Controllers
         }
 
         [HttpPut("start/{id:guid}")]
+        [Authorize(Roles = "hirer")]
         public async Task<ActionResult> StartProjectAsync(Guid id)
         {
             var result = await _mediator.Send(new StartProjectCommand(id));
@@ -88,6 +97,7 @@ namespace ProjectE.API.Controllers
         }
 
         [HttpPost("comments")]
+        [Authorize(Roles = "hirer, freelancer")]
         public async Task<ActionResult> CreateProjectCommentAsync(CreateCommentCommand command)
         {
             var result = await _mediator.Send(command);
