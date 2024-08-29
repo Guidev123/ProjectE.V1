@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using ProjectE.Application.DTOs.Customers;
 using ProjectE.Application.Responses;
+using ProjectE.Core.Auth;
 using ProjectE.Core.Entities;
 using ProjectE.Core.Repositories;
-using ProjectE.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

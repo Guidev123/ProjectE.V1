@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using ProjectE.Application.Responses;
+using ProjectE.Core.Auth;
 using ProjectE.Core.Entities;
 using ProjectE.Core.Repositories;
-using ProjectE.Core.Services;
 
 namespace ProjectE.Application.Commands.Customers.CreateCustomers
 {

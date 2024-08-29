@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProjectE.Core.Auth;
 using ProjectE.Core.Repositories;
-using ProjectE.Core.Services;
 using ProjectE.Infrastructure.Auth;
 using ProjectE.Infrastructure.Repositories;
 
