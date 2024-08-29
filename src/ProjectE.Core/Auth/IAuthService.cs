@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectE.Core.Services
+namespace ProjectE.Core.Auth
 {
     public interface IAuthService
     {
