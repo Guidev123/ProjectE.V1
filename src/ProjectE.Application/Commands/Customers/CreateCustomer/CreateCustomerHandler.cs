@@ -16,9 +16,10 @@ namespace ProjectE.Application.Commands.Customers.CreateCustomers
             request.Password = _authService.ComputeSha256Hash(request.Password);
             var customer = request.ToEntity();
 
-            await _customerRepository.CreateCustomerAsync(customer);
+            var customerExists = await _customerRepository.CustomerExistsAsync(customer);
+            if (customerExists) return Response<Customer>.Error("Já existe um usuario com este email");
 
-            return Response<Customer>.Success(customer);
+            return Response<Customer>.Success(await _customerRepository.CreateCustomerAsync(customer));
         }
     }
 }

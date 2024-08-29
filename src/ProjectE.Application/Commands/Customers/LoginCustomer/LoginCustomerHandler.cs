@@ -25,7 +25,7 @@ namespace ProjectE.Application.Commands.Customers.LoginCustomer
             var customer = await _customerRepository.GetCustomerByEmailAndPasswordAsync(request.Email, passwordHash);
             if (customer is null) return Response<LoginCustomerDTO>.Error("Está conta não existe");
 
-            var login = new LoginCustomerDTO(customer.Email, _authService.GenerateJwtToken(customer.Email, customer.Role));
+            var login = new LoginCustomerDTO(customer.Email, _authService.GenerateJwtToken(customer.Email, customer.Role.ToString()));
 
             return Response<LoginCustomerDTO>.Success(login);
         }

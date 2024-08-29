@@ -15,7 +15,7 @@ namespace ProjectE.Core.Repositories
         Task<Customer?> GetCustomerByEmailAndPasswordAsync(string email, string passwordHash);
         Task<Skill> CreateCustomerSkillAsync(Skill skill);
         Task<Customer> CreateCustomerAsync(Customer customer);
-        Task<bool> CustomerExistsAsync(Guid id);
+        Task<bool> CustomerExistsAsync(Customer customer);
         Task UpdateCustomerAsync(Customer customer);
     }
 }

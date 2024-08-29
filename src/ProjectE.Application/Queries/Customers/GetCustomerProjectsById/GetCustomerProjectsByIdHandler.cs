@@ -18,9 +18,6 @@ namespace ProjectE.Application.Queries.Customers.GetCustomerProjectsById
 
         public async Task<Response<CustomerProjectsDTO>> Handle(GetCustomerProjectsByIdQuery request, CancellationToken cancellationToken)
         {
-            var customerExists = await _customerRepository.CustomerExistsAsync(request.Id);
-            if (!customerExists) return Response<CustomerProjectsDTO>.Error("Cliente nao existe");
-
             var customerProjects = await _customerRepository.GetCustomerProjectsByIdAsync(request.Id);
 
             if (customerProjects is null) return Response<CustomerProjectsDTO>.Error("Cliente nao possui projetos");

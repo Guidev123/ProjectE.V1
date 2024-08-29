@@ -12,7 +12,7 @@ using ProjectE.Infrastructure;
 namespace ProjectE.Infrastructure.Migrations
 {
     [DbContext(typeof(ProjectEDbContext))]
-    [Migration("20240824024534_v1")]
+    [Migration("20240829000901_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -38,6 +38,7 @@ namespace ProjectE.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("varchar(180)");
 
                     b.Property<bool>("IsDeleted")
@@ -47,33 +48,16 @@ namespace ProjectE.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(180)");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("varchar(180)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Customers", (string)null);
-                });
-
-            modelBuilder.Entity("ProjectE.Core.Entities.CustomerSkill", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("SkillId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("SkillId");
-
-                    b.ToTable("CustomerSkills", (string)null);
                 });
 
             modelBuilder.Entity("ProjectE.Core.Entities.Project", b =>
@@ -153,7 +137,11 @@ namespace ProjectE.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("CustomerId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("varchar(180)");
 
                     b.Property<bool>("IsDeleted")
@@ -161,26 +149,9 @@ namespace ProjectE.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerId");
+
                     b.ToTable("Skills", (string)null);
-                });
-
-            modelBuilder.Entity("ProjectE.Core.Entities.CustomerSkill", b =>
-                {
-                    b.HasOne("ProjectE.Core.Entities.Customer", "Customer")
-                        .WithMany("Skills")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("ProjectE.Core.Entities.Skill", "Skill")
-                        .WithMany("CustomerSkills")
-                        .HasForeignKey("SkillId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Skill");
                 });
 
             modelBuilder.Entity("ProjectE.Core.Entities.Project", b =>
@@ -221,6 +192,17 @@ namespace ProjectE.Infrastructure.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("ProjectE.Core.Entities.Skill", b =>
+                {
+                    b.HasOne("ProjectE.Core.Entities.Customer", "Customer")
+                        .WithMany("Skills")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("ProjectE.Core.Entities.Customer", b =>
                 {
                     b.Navigation("FreelanceProjects");
@@ -235,11 +217,6 @@ namespace ProjectE.Infrastructure.Migrations
             modelBuilder.Entity("ProjectE.Core.Entities.Project", b =>
                 {
                     b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("ProjectE.Core.Entities.Skill", b =>
-                {
-                    b.Navigation("CustomerSkills");
                 });
 #pragma warning restore 612, 618
         }
