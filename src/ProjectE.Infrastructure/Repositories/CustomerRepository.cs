@@ -36,8 +36,8 @@ namespace ProjectE.Infrastructure.Repositories
             return query;
         }
 
-        public async Task<bool> CustomerExistsAsync(Guid id)
-            => await _context.Customers.Where(x => !x.IsDeleted).AnyAsync(x => x.Id == id);
+        public async Task<bool> CustomerExistsAsync(Customer customer)
+            => await _context.Customers.Where(x => !x.IsDeleted).AnyAsync(x => x.Id == customer.Id || x.Email == customer.Email);
 
         public async Task<Skill> CreateCustomerSkillAsync(Skill skill)
         {

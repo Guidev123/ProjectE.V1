@@ -49,9 +49,8 @@ namespace ProjectE.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(180)");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("varchar(180)");
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
