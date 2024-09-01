@@ -20,4 +20,13 @@ public class ProjectTest
         Assert.Equal(EProjectStatus.InProgress, project.ProjectStatus);
         Assert.NotNull(project.StartedAt);
     }
+    [Fact]
+    public void Should_Delete_Project()
+    {
+        Project project = new Project(customer, freelancer, "Projeto teste", "Projeto teste descricao", 1000M);
+
+        project.SetEntityAsDeleted();
+
+        Assert.True(project.IsDeleted);
+    }
 }
