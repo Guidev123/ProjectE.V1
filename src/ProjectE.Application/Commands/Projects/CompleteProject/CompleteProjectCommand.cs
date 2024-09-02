@@ -10,11 +10,18 @@ namespace ProjectE.Application.Commands.Projects.CompleteProject
 {
     public class CompleteProjectCommand : IRequest<Response>
     {
-        public CompleteProjectCommand(Guid id)
+        public CompleteProjectCommand(Guid id, string creditCardNumber, string cvv, string expiresAt, string fullName)
         {
             Id = id;
+            CreditCardNumber = creditCardNumber;
+            Cvv = cvv;
+            ExpiresAt = expiresAt;
+            FullName = fullName;
         }
         public Guid Id { get; private set; }
-
+        public string CreditCardNumber { get; private set; }
+        public string Cvv { get; private set; }
+        public string ExpiresAt { get; private set; }
+        public string FullName { get; private set; }
     }
 }
