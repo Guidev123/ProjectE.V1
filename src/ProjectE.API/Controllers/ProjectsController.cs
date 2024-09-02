@@ -78,7 +78,7 @@ namespace ProjectE.API.Controllers
         [Authorize(Roles = "Contractor")]
         public async Task<ActionResult> CompleteProjectAsync(Guid id)
         {
-            var result = await _mediator.Send(new CompleteProjectCommand(id));
+            var result = await _mediator.Send(new CompleteProjectCommand(id, "", "", "", ""));
 
             if (!result.IsSuccess) return BadRequest(result.Message);
 
