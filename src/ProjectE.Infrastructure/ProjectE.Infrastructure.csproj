@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjectE.Application\ProjectE.Application.csproj" />
     <ProjectReference Include="..\ProjectE.Core\ProjectE.Core.csproj" />
   </ItemGroup>
 

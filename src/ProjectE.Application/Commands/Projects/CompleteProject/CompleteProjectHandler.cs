@@ -1,8 +1,6 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using ProjectE.Application.Responses;
 using ProjectE.Core.Repositories;
-using ProjectE.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
