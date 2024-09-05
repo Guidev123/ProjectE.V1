@@ -5,11 +5,13 @@
         <strong>HireFreelancers</strong> é um sistema de contratação de freelancers, onde um cliente pode criar projetos e adicionar um freelancer com base em suas habilidades. O sistema também oferece um mecanismo de comentários para facilitar a comunicação entre o freelancer e o cliente.
     </p>
     
-![image](https://github.com/user-attachments/assets/46d2c926-e2aa-46d8-a53a-dbdd77a01d3d)
+![image](https://github.com/user-attachments/assets/7b89271f-3b44-4eaa-984b-ee740db32226)
+
+![image](https://github.com/user-attachments/assets/210afbd2-f753-4324-b6ac-d8a549b8f3b1)
 
  <h2>Padrões Arquiteturais Implementados</h2>
     <ul>
-        <li><strong>Clean Architecture</strong></li>
+        <li><strong>Onion Architecture</strong></li>
         <li><strong>CQRS</strong></li>
         <li><strong>Domain Driven Design (DDD)</strong></li>
     </ul>
