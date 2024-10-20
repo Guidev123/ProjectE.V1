@@ -11,7 +11,7 @@
 
  <h2>Padrões Arquiteturais Implementados</h2>
     <ul>
-        <li><strong>Onion Architecture</strong></li>
+        <li><strong>Clean Architecture</strong></li>
         <li><strong>CQRS</strong></li>
         <li><strong>Domain Driven Design (DDD)</strong></li>
     </ul>
