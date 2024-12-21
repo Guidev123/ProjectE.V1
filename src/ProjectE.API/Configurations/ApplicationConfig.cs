@@ -3,11 +3,11 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
-namespace ProjectE.API.Middlewares
+namespace ProjectE.API.Configurations
 {
-    public static class ConfigureMiddlewares
+    public static class ApplicationConfig
     {
-        public static void AddSwaggerDocsMiddleware(this WebApplicationBuilder builder)
+        public static void AddSwaggerDocs(this WebApplicationBuilder builder)
         {
             builder.Services.AddSwaggerGen(c =>
             {
