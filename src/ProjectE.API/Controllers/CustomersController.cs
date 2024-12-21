@@ -50,6 +50,7 @@ namespace ProjectE.API.Controllers
 
             return Ok(result);
         }
+
         [HttpGet("get-projects/{id:guid}")]
         public async Task<ActionResult> GetCustomerProjectsByIdAsync(Guid id)
         {
