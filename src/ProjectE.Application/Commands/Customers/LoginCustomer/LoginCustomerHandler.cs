@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using ProjectE.Application.DTOs.Customers;
 using ProjectE.Application.Responses;
-using ProjectE.Core.Auth;
+using ProjectE.Application.Services;
 using ProjectE.Core.Entities;
 using ProjectE.Core.Repositories;
 using System;
@@ -22,7 +22,7 @@ namespace ProjectE.Application.Commands.Customers.LoginCustomer
         {
             var passwordHash = _authService.ComputeSha256Hash(request.Password);
 
-            var customer = await _customerRepository.GetCustomerByEmailAndPasswordAsync(request.Email, passwordHash);
+            var customer = await _customerRepository.GetByEmailAndPasswordAsync(request.Email, passwordHash);
             if (customer is null) return Response<LoginCustomerDTO>.Error("Está conta não existe");
 
             var login = new LoginCustomerDTO(customer.Email, _authService.GenerateJwtToken(customer.Email, customer.Role.ToString()));

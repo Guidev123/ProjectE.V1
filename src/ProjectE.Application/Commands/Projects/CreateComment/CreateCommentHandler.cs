@@ -11,13 +11,13 @@ namespace ProjectE.Application.Commands.Projects.CreateComment
 
         public async Task<Response> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
-            var exists = await _projectRepository.ProjectExistsAsync(request.ProjectId);
+            var exists = await _projectRepository.ExistsAsync(request.ProjectId);
 
             if (!exists) return Response.Error("Projeto não existente");
 
             var comment = new ProjectComment(request.Content, request.ProjectId, request.CustomerId);
 
-            await _projectRepository.CreateProjectCommentAsync(comment);
+            await _projectRepository.CreateCommentAsync(comment);
 
             return Response.Success();
         }

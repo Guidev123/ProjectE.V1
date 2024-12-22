@@ -3,14 +3,14 @@ using ProjectE.Application.Responses;
 using ProjectE.Core.Entities;
 using ProjectE.Core.Enums;
 
-namespace ProjectE.Application.Commands.Customers.CreateCustomers
+namespace ProjectE.Application.Commands.Customers.CreateCustomer
 {
     public class CreateCustomerCommand : IRequest<Response>
     {
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public ECustomerType Role { get; set; } 
+        public ECustomerType Role { get; set; }
         public DateTime BirthDate { get; set; }
 
         public Customer ToEntity()

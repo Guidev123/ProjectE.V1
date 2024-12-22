@@ -16,7 +16,7 @@ namespace ProjectE.Application.Queries.Skills.GetSkillsByCustomerId
 
         public async Task<Response> Handle(GetSkillsByCustomerIdCommand request, CancellationToken cancellationToken)
         {
-            var customer = await _customerRepository.GetCustomerSkillsByIdAsync(request.Id);
+            var customer = await _customerRepository.GetSkillsByIdAsync(request.Id);
 
             if (customer is null) return Response.Error("Este cliente nao existe");
 

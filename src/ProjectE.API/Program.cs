@@ -1,6 +1,6 @@
 using ProjectE.API.Configurations;
-using ProjectE.Application.Configuration;
-using ProjectE.Infrastructure.Configuration;
+using ProjectE.Application;
+using ProjectE.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectE.Application.Commands.Customers.DeleteCustomers
+namespace ProjectE.Application.Commands.Customers.DeleteCustomer
 {
     public class DeleteCustomerCommand : IRequest<Response>
     {

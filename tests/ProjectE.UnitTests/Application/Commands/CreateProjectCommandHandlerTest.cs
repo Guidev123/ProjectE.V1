@@ -33,7 +33,7 @@ namespace ProjectE.UnitTests.Application.Commands
             var id = await createProjectHandler.Handle(createProjectCommand, new CancellationToken());
 
             Assert.NotNull(id);
-            projectRepositoryMock.Verify(x => x.CreateProjectAsync(It.IsAny<Project>()), Times.Once);
+            projectRepositoryMock.Verify(x => x.CreateAsync(It.IsAny<Project>()), Times.Once);
         }
     }
 }

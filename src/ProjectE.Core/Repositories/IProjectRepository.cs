@@ -3,13 +3,13 @@ namespace ProjectE.Core.Repositories;
 
 public interface IProjectRepository
 {
-    Task<List<Project>> GetAllProjectsAsync();
-    Task<Project?> GetProjectDetailsByIdAsync(Guid id);
-    Task<Project?> GetProjectByIdAsync(Guid id);
-    Task<ProjectComment?> GetProjectCommentByIdAsync(Guid id);
-    Task<Project> CreateProjectAsync(Project project);
-    Task<bool> ProjectExistsAsync(Guid id);
-    Task UpdateProjectAsync(Project project);
-    Task UpdateProjectCommentAsync(ProjectComment comment);
-    Task CreateProjectCommentAsync(ProjectComment comment);
+    Task<List<Project>> GetAllAsync();
+    Task<Project?> GetDetailsByIdAsync(Guid id);
+    Task<Project?> GetByIdAsync(Guid id);
+    Task<ProjectComment?> GetCommentByIdAsync(Guid id);
+    Task<Project> CreateAsync(Project project);
+    Task<bool> ExistsAsync(Guid id);
+    Task UpdateAsync(Project project);
+    Task UpdateCommentAsync(ProjectComment comment);
+    Task CreateCommentAsync(ProjectComment comment);
 }

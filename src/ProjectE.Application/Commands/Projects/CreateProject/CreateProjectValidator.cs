@@ -1,16 +1,15 @@
 ﻿using FluentValidation;
-using ProjectE.Application.Commands.Projects.CreateProject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectE.Application.Validators.Projects
+namespace ProjectE.Application.Commands.Projects.CreateProject
 {
-    public class CreateProjectValidation : AbstractValidator<CreateProjectCommand>
+    public class CreateProjectValidator : AbstractValidator<CreateProjectCommand>
     {
-        public CreateProjectValidation()
+        public CreateProjectValidator()
         {
             RuleFor(x => x.Title).NotEmpty().MinimumLength(2).MaximumLength(50)
                 .WithMessage("O titulo deve conter de 2 a 50 caracters");

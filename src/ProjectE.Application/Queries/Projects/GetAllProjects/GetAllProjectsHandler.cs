@@ -10,7 +10,7 @@ namespace ProjectE.Application.Queries.Projects.GetAllProjects
         private readonly IProjectRepository _projectRepository = projectRepository;
         public async Task<Response<List<ProjectItemDTO>>> Handle(GetAllProjectsQuery request, CancellationToken cancellationToken)
         {
-            var projects = await _projectRepository.GetAllProjectsAsync();
+            var projects = await _projectRepository.GetAllAsync();
 
             var result = projects.Select(ProjectItemDTO.FromEntity).ToList();
 

@@ -11,7 +11,7 @@ namespace ProjectE.Application.Queries.Projects.GetProjectById
 
         public async Task<Response<ProjectDTO>> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetProjectDetailsByIdAsync(request.Id);
+            var project = await _projectRepository.GetDetailsByIdAsync(request.Id);
 
             if (project is null) return Response<ProjectDTO>.Error("Projeto nao existente");
 

@@ -9,13 +9,13 @@ namespace ProjectE.Core.Repositories
 {
     public interface ICustomerRepository
     {
-        Task<Customer?> GetCustomerById(Guid id);
-        Task<Customer?> GetCustomerProjectsByIdAsync(Guid id);
-        Task<Customer?> GetCustomerSkillsByIdAsync(Guid id);
-        Task<Customer?> GetCustomerByEmailAndPasswordAsync(string email, string passwordHash);
-        Task<Skill> CreateCustomerSkillAsync(Skill skill);
-        Task<Customer> CreateCustomerAsync(Customer customer);
-        Task<bool> CustomerExistsAsync(Customer customer);
-        Task UpdateCustomerAsync(Customer customer);
+        Task<Customer?> GetById(Guid id);
+        Task<Customer?> GetProjectsByIdAsync(Guid id);
+        Task<Customer?> GetSkillsByIdAsync(Guid id);
+        Task<Customer?> GetByEmailAndPasswordAsync(string email, string passwordHash);
+        Task<Skill> CreateSkillAsync(Skill skill);
+        Task<Customer> CreateAsync(Customer customer);
+        Task<bool> ExistsAsync(Customer customer);
+        Task UpdateAsync(Customer customer);
     }
 }

@@ -13,7 +13,7 @@ namespace ProjectE.Application.Commands.Projects.CreateProject
         {
             var project = request.ToEntity();
 
-            await _projectRepository.CreateProjectAsync(project);
+            await _projectRepository.CreateAsync(project);
 
             return Response<Project>.Success(project);
         }
