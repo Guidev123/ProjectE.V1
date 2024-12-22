@@ -15,7 +15,7 @@
     <li><strong>Domain Driven Design (DDD)</strong></li>
 </ul>
 
-<img src="https://github.com/user-attachments/assets/c0c7c0f4-0c9c-4bf6-8e51-e9317c1d5902" alt="Architecture Diagram 1">
+![image](https://github.com/user-attachments/assets/c6299d83-d5da-4d27-8e65-b64c5242ff1d)
 
 <img src="https://github.com/user-attachments/assets/5f1fdb59-be2b-475f-8342-bcbb60395927" alt="Architecture Diagram 2">
 
