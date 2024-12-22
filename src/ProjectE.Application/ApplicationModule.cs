@@ -2,12 +2,12 @@
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using ProjectE.Application.Commands.Customers.CreateCustomer;
 using ProjectE.Application.Commands.Projects.CreateComment;
 using ProjectE.Application.Commands.Projects.CreateProject;
 using ProjectE.Application.Responses;
-using ProjectE.Application.Validators.Customers;
 
-namespace ProjectE.Application.Configuration
+namespace ProjectE.Application
 {
     public static class ApplicationModule
     {

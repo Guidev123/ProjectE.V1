@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ProjectE.Infrastructure;
+using ProjectE.Infrastructure.Persistence;
 
 #nullable disable
 
-namespace ProjectE.Infrastructure.Migrations
+namespace ProjectE.Infrastructure.Pesistence.Migrations
 {
     [DbContext(typeof(ProjectEDbContext))]
-    partial class ProjectEDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241222101513_v1")]
+    partial class v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

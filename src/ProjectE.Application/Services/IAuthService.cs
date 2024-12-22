@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProjectE.Core.Auth
+﻿namespace ProjectE.Application.Services
 {
     public interface IAuthService
     {

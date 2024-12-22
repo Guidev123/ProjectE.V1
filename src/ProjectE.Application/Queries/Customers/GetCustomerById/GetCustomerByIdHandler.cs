@@ -16,7 +16,7 @@ namespace ProjectE.Application.Queries.Customers.GetCustomerById
         private readonly ICustomerRepository _customerRepository = customerRepository;
         public async Task<Response> Handle(GetCustomerByIdQuery request, CancellationToken cancellationToken)
         {
-            var customer = await _customerRepository.GetCustomerById(request.Id);
+            var customer = await _customerRepository.GetById(request.Id);
 
             if (customer is null) return Response.Error("Este cliente nao existe");
 

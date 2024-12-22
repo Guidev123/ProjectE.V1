@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectE.Core.Auth;
+using ProjectE.Application.Services;
 using ProjectE.Core.Repositories;
-using ProjectE.Infrastructure.Auth;
-using ProjectE.Infrastructure.Repositories;
+using ProjectE.Infrastructure.Persistence;
+using ProjectE.Infrastructure.Persistence.Repositories;
 
-namespace ProjectE.Infrastructure.Configuration
+namespace ProjectE.Infrastructure
 {
     public static class InfrastructureModule
     {

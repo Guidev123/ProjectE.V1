@@ -10,13 +10,13 @@ namespace ProjectE.Application.Commands.Projects.UpdateProject
 
         public async Task<Response> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetProjectByIdAsync(request.ProjectId);
+            var project = await _projectRepository.GetByIdAsync(request.ProjectId);
 
             if (project is null) return Response.Error("Projeto nao existente");
 
             project.Update(request.Title, request.Description, request.TotalPrice);
 
-            await _projectRepository.UpdateProjectAsync(project);
+            await _projectRepository.UpdateAsync(project);
 
             return Response.Success();
         }

@@ -1,17 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using ProjectE.Core.Auth;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Runtime.Intrinsics.Arm;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ProjectE.Infrastructure.Auth
+namespace ProjectE.Application.Services
 {
     public class AuthService(IConfiguration configuration) : IAuthService
     {
@@ -19,16 +13,13 @@ namespace ProjectE.Infrastructure.Auth
 
         public string ComputeSha256Hash(string password)
         {
-            using(SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+            byte[] bytes = SHA256.HashData(Encoding.UTF8.GetBytes(password));
 
-                StringBuilder builder = new StringBuilder();
-                
-                for(int i = 0; i < bytes.Length; i++) builder.Append(bytes[i].ToString("x2"));
-               
-                return builder.ToString();
-            }
+            StringBuilder builder = new();
+
+            for (int i = 0; i < bytes.Length; i++) builder.Append(bytes[i].ToString("x2"));
+
+            return builder.ToString();
         }
 
         public string GenerateJwtToken(string email, string role)

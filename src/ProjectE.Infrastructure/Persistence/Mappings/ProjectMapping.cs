@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectE.Infrastructure.Mappings
+namespace ProjectE.Infrastructure.Persistence.Mappings
 {
     public class ProjectMapping : IEntityTypeConfiguration<Project>
     {

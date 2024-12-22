@@ -15,12 +15,12 @@ namespace ProjectE.Application.Commands.Projects.DeleteProject
 
         public async Task<Response> Handle(DeleteProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetProjectByIdAsync(request.Id);
+            var project = await _projectRepository.GetByIdAsync(request.Id);
 
             if (project is null) return Response.Error("Projeto nao existe");
 
             project.SetEntityAsDeleted();
-            await _projectRepository.UpdateProjectAsync(project);
+            await _projectRepository.UpdateAsync(project);
 
             return Response.Success();
         }

@@ -10,12 +10,12 @@ namespace ProjectE.Application.Commands.Projects.DeleteProjectComment
 
         public async Task<Response> Handle(DeleteProjectCommentCommand request, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetProjectCommentByIdAsync(request.Id);
+            var project = await _projectRepository.GetCommentByIdAsync(request.Id);
 
             if (project is null) return Response.Error("Este comentario nao existe");
 
             project.SetEntityAsDeleted();
-            await _projectRepository.UpdateProjectCommentAsync(project);
+            await _projectRepository.UpdateCommentAsync(project);
 
             return Response.Success();
         }

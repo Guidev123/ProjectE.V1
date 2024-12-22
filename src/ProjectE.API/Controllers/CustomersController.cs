@@ -1,12 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProjectE.Application.Commands.Customers.CreateCustomers;
-using ProjectE.Application.Commands.Customers.DeleteCustomers;
+using ProjectE.Application.Commands.Customers.CreateCustomer;
+using ProjectE.Application.Commands.Customers.DeleteCustomer;
 using ProjectE.Application.Commands.Customers.LoginCustomer;
 using ProjectE.Application.Queries.Customers.GetCustomerById;
 using ProjectE.Application.Queries.Customers.GetCustomerProjectsById;
-using ProjectE.Application.Queries.Skills.GetSkillsByCustomerId;
 
 namespace ProjectE.API.Controllers
 {

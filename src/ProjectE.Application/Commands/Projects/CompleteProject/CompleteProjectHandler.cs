@@ -15,13 +15,13 @@ namespace ProjectE.Application.Commands.Projects.CompleteProject
 
         public async Task<Response> Handle(CompleteProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = await _projectRepository.GetProjectByIdAsync(request.Id);
+            var project = await _projectRepository.GetByIdAsync(request.Id);
 
             if (project is null) return Response.Error("Projeto nao existente");
 
             project.Complete();
 
-            await _projectRepository.UpdateProjectAsync(project);
+            await _projectRepository.UpdateAsync(project);
 
             return Response.Success();
         }

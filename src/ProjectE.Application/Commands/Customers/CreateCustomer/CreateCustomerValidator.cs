@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
-using ProjectE.Application.Commands.Customers.CreateCustomers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectE.Application.Validators.Customers
+namespace ProjectE.Application.Commands.Customers.CreateCustomer
 {
     public class CreateCustomerValidator : AbstractValidator<CreateCustomerCommand>
     {
