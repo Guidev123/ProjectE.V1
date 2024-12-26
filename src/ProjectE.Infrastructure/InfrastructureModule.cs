@@ -23,9 +23,9 @@ namespace ProjectE.Infrastructure
 
         private static void AddRepositories(this IServiceCollection services)
         {
-            services.AddTransient<IProjectRepository, ProjectRepository>();
-            services.AddTransient<ICustomerRepository, CustomerRepository>();
-            services.AddTransient<IAuthService, AuthService>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IAuthService, AuthService>();
         }
     }
 }
