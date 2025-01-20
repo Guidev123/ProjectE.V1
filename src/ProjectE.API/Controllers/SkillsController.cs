@@ -1,9 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectE.Application.Commands.Skills.CreateSkill;
-using ProjectE.Application.Queries.Customers.GetCustomerById;
 using ProjectE.Application.Queries.Skills.GetSkillsByCustomerId;
 
 namespace ProjectE.API.Controllers
